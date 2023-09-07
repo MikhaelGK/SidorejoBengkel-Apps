@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SIDOREJO_WORKSHOPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="DeletedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="DeletedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CustomerVehicle">
+          <Key>
+            <PropertyRef Name="CustomerVehicleId" />
+          </Key>
+          <Property Name="CustomerVehicleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="VehicleId" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="PoliceNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="DeletedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DetailTrx">
+          <Key>
+            <PropertyRef Name="DetailTrxId" />
+          </Key>
+          <Property Name="DetailTrxId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrxId" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ProductId" Type="nchar" MaxLength="6" />
+          <Property Name="CustomerVehicleId" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="DeletedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HeaderTrx">
+          <Key>
+            <PropertyRef Name="TrxId" />
+          </Key>
+          <Property Name="TrxId" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="CustomerId" Type="nchar" MaxLength="6" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="DeletedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="IncomingProduct">
+          <Key>
+            <PropertyRef Name="IncomingProductId" />
+          </Key>
+          <Property Name="IncomingProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="ProductId" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="BuyPrice" Type="int" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="DeletedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SellPrice" Type="int" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="DeletedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="VehicleId" />
+          </Key>
+          <Property Name="VehicleId" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="DeletedAt" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_CustomerVehicles_Customers">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CustomerVehicle" Type="Self.CustomerVehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerVehicle">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerVehicles_Vehicles">
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="CustomerVehicle" Type="Self.CustomerVehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="VehicleId" />
+            </Principal>
+            <Dependent Role="CustomerVehicle">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailTrx_CustomerVehicle">
+          <End Role="CustomerVehicle" Type="Self.CustomerVehicle" Multiplicity="0..1" />
+          <End Role="DetailTrx" Type="Self.DetailTrx" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerVehicle">
+              <PropertyRef Name="CustomerVehicleId" />
+            </Principal>
+            <Dependent Role="DetailTrx">
+              <PropertyRef Name="CustomerVehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailTrx_HeaderTrx">
+          <End Role="HeaderTrx" Type="Self.HeaderTrx" Multiplicity="1" />
+          <End Role="DetailTrx" Type="Self.DetailTrx" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeaderTrx">
+              <PropertyRef Name="TrxId" />
+            </Principal>
+            <Dependent Role="DetailTrx">
+              <PropertyRef Name="TrxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailTrx_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="DetailTrx" Type="Self.DetailTrx" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="DetailTrx">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HeaderTrx_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="HeaderTrx" Type="Self.HeaderTrx" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="HeaderTrx">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IncomingProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="IncomingProduct" Type="Self.IncomingProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="IncomingProduct">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SIDOREJO_WORKSHOPModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerVehicle" EntityType="Self.CustomerVehicle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailTrx" EntityType="Self.DetailTrx" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HeaderTrx" EntityType="Self.HeaderTrx" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IncomingProduct" EntityType="Self.IncomingProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CustomerVehicles_Customers" Association="Self.FK_CustomerVehicles_Customers">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerVehicle" EntitySet="CustomerVehicle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerVehicles_Vehicles" Association="Self.FK_CustomerVehicles_Vehicles">
+            <End Role="Vehicle" EntitySet="Vehicle" />
+            <End Role="CustomerVehicle" EntitySet="CustomerVehicle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailTrx_CustomerVehicle" Association="Self.FK_DetailTrx_CustomerVehicle">
+            <End Role="CustomerVehicle" EntitySet="CustomerVehicle" />
+            <End Role="DetailTrx" EntitySet="DetailTrx" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailTrx_HeaderTrx" Association="Self.FK_DetailTrx_HeaderTrx">
+            <End Role="HeaderTrx" EntitySet="HeaderTrx" />
+            <End Role="DetailTrx" EntitySet="DetailTrx" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailTrx_Product" Association="Self.FK_DetailTrx_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="DetailTrx" EntitySet="DetailTrx" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HeaderTrx_Customer" Association="Self.FK_HeaderTrx_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="HeaderTrx" EntitySet="HeaderTrx" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IncomingProduct_Product" Association="Self.FK_IncomingProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="IncomingProduct" EntitySet="IncomingProduct" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SIDOREJO_WORKSHOPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CustomerVehicles" Relationship="SIDOREJO_WORKSHOPModel.FK_CustomerVehicles_Customers" FromRole="Customer" ToRole="CustomerVehicle" />
+          <NavigationProperty Name="HeaderTrxes" Relationship="SIDOREJO_WORKSHOPModel.FK_HeaderTrx_Customer" FromRole="Customer" ToRole="HeaderTrx" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="VehicleId" />
+          </Key>
+          <Property Name="VehicleId" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CustomerVehicles" Relationship="SIDOREJO_WORKSHOPModel.FK_CustomerVehicles_Vehicles" FromRole="Vehicle" ToRole="CustomerVehicle" />
+          </EntityType>
+        <EntityContainer Name="db" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
+          <EntitySet Name="Products" EntityType="SIDOREJO_WORKSHOPModel.Product" />
+          <EntitySet Name="CustomerVehicles" EntityType="SIDOREJO_WORKSHOPModel.CustomerVehicle" />
+          <AssociationSet Name="FK_CustomerVehicles_Customers" Association="SIDOREJO_WORKSHOPModel.FK_CustomerVehicles_Customers">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerVehicle" EntitySet="CustomerVehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerVehicles_Vehicles" Association="SIDOREJO_WORKSHOPModel.FK_CustomerVehicles_Vehicles">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="CustomerVehicle" EntitySet="CustomerVehicles" />
+          </AssociationSet>
+          <EntitySet Name="HeaderTrxes" EntityType="SIDOREJO_WORKSHOPModel.HeaderTrx" />
+          <AssociationSet Name="FK_HeaderTrx_Customer" Association="SIDOREJO_WORKSHOPModel.FK_HeaderTrx_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="HeaderTrx" EntitySet="HeaderTrxes" />
+          </AssociationSet>
+          <EntitySet Name="IncomingProducts" EntityType="SIDOREJO_WORKSHOPModel.IncomingProduct" />
+          <AssociationSet Name="FK_IncomingProduct_Product" Association="SIDOREJO_WORKSHOPModel.FK_IncomingProduct_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="IncomingProduct" EntitySet="IncomingProducts" />
+          </AssociationSet>
+          <EntitySet Name="DetailTrxes" EntityType="SIDOREJO_WORKSHOPModel.DetailTrx" />
+          <AssociationSet Name="FK_DetailTrx_CustomerVehicle" Association="SIDOREJO_WORKSHOPModel.FK_DetailTrx_CustomerVehicle">
+            <End Role="CustomerVehicle" EntitySet="CustomerVehicles" />
+            <End Role="DetailTrx" EntitySet="DetailTrxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailTrx_HeaderTrx" Association="SIDOREJO_WORKSHOPModel.FK_DetailTrx_HeaderTrx">
+            <End Role="HeaderTrx" EntitySet="HeaderTrxes" />
+            <End Role="DetailTrx" EntitySet="DetailTrxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailTrx_Product" Association="SIDOREJO_WORKSHOPModel.FK_DetailTrx_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="DetailTrx" EntitySet="DetailTrxes" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SellPrice" Type="Int32" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="IncomingProducts" Relationship="SIDOREJO_WORKSHOPModel.FK_IncomingProduct_Product" FromRole="Product" ToRole="IncomingProduct" />
+          <NavigationProperty Name="DetailTrxes" Relationship="SIDOREJO_WORKSHOPModel.FK_DetailTrx_Product" FromRole="Product" ToRole="DetailTrx" />
+        </EntityType>
+        <EntityType Name="CustomerVehicle">
+          <Key>
+            <PropertyRef Name="CustomerVehicleId" />
+          </Key>
+          <Property Name="CustomerVehicleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="VehicleId" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="PoliceNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Customer" Relationship="SIDOREJO_WORKSHOPModel.FK_CustomerVehicles_Customers" FromRole="CustomerVehicle" ToRole="Customer" />
+          <NavigationProperty Name="Vehicle" Relationship="SIDOREJO_WORKSHOPModel.FK_CustomerVehicles_Vehicles" FromRole="CustomerVehicle" ToRole="Vehicle" />
+          <NavigationProperty Name="DetailTrxes" Relationship="SIDOREJO_WORKSHOPModel.FK_DetailTrx_CustomerVehicle" FromRole="CustomerVehicle" ToRole="DetailTrx" />
+        </EntityType>
+        <Association Name="FK_CustomerVehicles_Customers">
+          <End Type="SIDOREJO_WORKSHOPModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="SIDOREJO_WORKSHOPModel.CustomerVehicle" Role="CustomerVehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerVehicle">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerVehicles_Vehicles">
+          <End Type="SIDOREJO_WORKSHOPModel.Vehicle" Role="Vehicle" Multiplicity="1" />
+          <End Type="SIDOREJO_WORKSHOPModel.CustomerVehicle" Role="CustomerVehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="VehicleId" />
+            </Principal>
+            <Dependent Role="CustomerVehicle">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HeaderTrx">
+          <Key>
+            <PropertyRef Name="TrxId" />
+          </Key>
+          <Property Name="TrxId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CustomerId" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Customer" Relationship="SIDOREJO_WORKSHOPModel.FK_HeaderTrx_Customer" FromRole="HeaderTrx" ToRole="Customer" />
+          <NavigationProperty Name="DetailTrxes" Relationship="SIDOREJO_WORKSHOPModel.FK_DetailTrx_HeaderTrx" FromRole="HeaderTrx" ToRole="DetailTrx" />
+        </EntityType>
+        <Association Name="FK_HeaderTrx_Customer">
+          <End Type="SIDOREJO_WORKSHOPModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="SIDOREJO_WORKSHOPModel.HeaderTrx" Role="HeaderTrx" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="HeaderTrx">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IncomingProduct">
+          <Key>
+            <PropertyRef Name="IncomingProductId" />
+          </Key>
+          <Property Name="IncomingProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProductId" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="BuyPrice" Type="Int32" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Product" Relationship="SIDOREJO_WORKSHOPModel.FK_IncomingProduct_Product" FromRole="IncomingProduct" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_IncomingProduct_Product">
+          <End Type="SIDOREJO_WORKSHOPModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="SIDOREJO_WORKSHOPModel.IncomingProduct" Role="IncomingProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="IncomingProduct">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DetailTrx">
+          <Key>
+            <PropertyRef Name="DetailTrxId" />
+          </Key>
+          <Property Name="DetailTrxId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrxId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ProductId" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="CustomerVehicleId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CustomerVehicle" Relationship="SIDOREJO_WORKSHOPModel.FK_DetailTrx_CustomerVehicle" FromRole="DetailTrx" ToRole="CustomerVehicle" />
+          <NavigationProperty Name="HeaderTrx" Relationship="SIDOREJO_WORKSHOPModel.FK_DetailTrx_HeaderTrx" FromRole="DetailTrx" ToRole="HeaderTrx" />
+          <NavigationProperty Name="Product" Relationship="SIDOREJO_WORKSHOPModel.FK_DetailTrx_Product" FromRole="DetailTrx" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_DetailTrx_CustomerVehicle">
+          <End Type="SIDOREJO_WORKSHOPModel.CustomerVehicle" Role="CustomerVehicle" Multiplicity="0..1" />
+          <End Type="SIDOREJO_WORKSHOPModel.DetailTrx" Role="DetailTrx" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerVehicle">
+              <PropertyRef Name="CustomerVehicleId" />
+            </Principal>
+            <Dependent Role="DetailTrx">
+              <PropertyRef Name="CustomerVehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailTrx_HeaderTrx">
+          <End Type="SIDOREJO_WORKSHOPModel.HeaderTrx" Role="HeaderTrx" Multiplicity="1" />
+          <End Type="SIDOREJO_WORKSHOPModel.DetailTrx" Role="DetailTrx" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeaderTrx">
+              <PropertyRef Name="TrxId" />
+            </Principal>
+            <Dependent Role="DetailTrx">
+              <PropertyRef Name="TrxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailTrx_Product">
+          <End Type="SIDOREJO_WORKSHOPModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="SIDOREJO_WORKSHOPModel.DetailTrx" Role="DetailTrx" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="DetailTrx">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SIDOREJO_WORKSHOPModelStoreContainer" CdmEntityContainer="db">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="SIDOREJO_WORKSHOPModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="SIDOREJO_WORKSHOPModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="SIDOREJO_WORKSHOPModel.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicle">
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="SIDOREJO_WORKSHOPModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerVehicles">
+            <EntityTypeMapping TypeName="SIDOREJO_WORKSHOPModel.CustomerVehicle">
+              <MappingFragment StoreEntitySet="CustomerVehicle">
+                <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="PoliceNumber" ColumnName="PoliceNumber" />
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerVehicleId" ColumnName="CustomerVehicleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HeaderTrxes">
+            <EntityTypeMapping TypeName="SIDOREJO_WORKSHOPModel.HeaderTrx">
+              <MappingFragment StoreEntitySet="HeaderTrx">
+                <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TrxId" ColumnName="TrxId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IncomingProducts">
+            <EntityTypeMapping TypeName="SIDOREJO_WORKSHOPModel.IncomingProduct">
+              <MappingFragment StoreEntitySet="IncomingProduct">
+                <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="BuyPrice" ColumnName="BuyPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IncomingProductId" ColumnName="IncomingProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailTrxes">
+            <EntityTypeMapping TypeName="SIDOREJO_WORKSHOPModel.DetailTrx">
+              <MappingFragment StoreEntitySet="DetailTrx">
+                <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CustomerVehicleId" ColumnName="CustomerVehicleId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="TrxId" ColumnName="TrxId" />
+                <ScalarProperty Name="DetailTrxId" ColumnName="DetailTrxId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

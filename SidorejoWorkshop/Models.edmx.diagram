@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6465e7a152c748f78592c05c950688e4" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="SIDOREJO_WORKSHOPModel.Admin" Width="1.5" PointX="7.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIDOREJO_WORKSHOPModel.Customer" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIDOREJO_WORKSHOPModel.Vehicle" Width="1.5" PointX="7.375" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIDOREJO_WORKSHOPModel.Product" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="SIDOREJO_WORKSHOPModel.CustomerVehicle" Width="1.5" PointX="9.625" PointY="6" />
+        <AssociationConnector Association="SIDOREJO_WORKSHOPModel.FK_CustomerVehicles_Customers" />
+        <AssociationConnector Association="SIDOREJO_WORKSHOPModel.FK_CustomerVehicles_Vehicles" />
+        <EntityTypeShape EntityType="SIDOREJO_WORKSHOPModel.HeaderTrx" Width="1.5" PointX="3" PointY="5.125" />
+        <AssociationConnector Association="SIDOREJO_WORKSHOPModel.FK_HeaderTrx_Customer" />
+        <EntityTypeShape EntityType="SIDOREJO_WORKSHOPModel.IncomingProduct" Width="1.5" PointX="5.25" PointY="0.75" />
+        <AssociationConnector Association="SIDOREJO_WORKSHOPModel.FK_IncomingProduct_Product" />
+        <EntityTypeShape EntityType="SIDOREJO_WORKSHOPModel.DetailTrx" Width="1.5" PointX="11.875" PointY="3.125" />
+        <AssociationConnector Association="SIDOREJO_WORKSHOPModel.FK_DetailTrx_CustomerVehicle" />
+        <AssociationConnector Association="SIDOREJO_WORKSHOPModel.FK_DetailTrx_HeaderTrx" />
+        <AssociationConnector Association="SIDOREJO_WORKSHOPModel.FK_DetailTrx_Product" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
