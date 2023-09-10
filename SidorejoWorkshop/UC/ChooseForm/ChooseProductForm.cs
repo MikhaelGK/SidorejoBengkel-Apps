@@ -46,6 +46,7 @@ namespace SidorejoWorkshop.UC.Payment
 
         private void LoadData(string search)
         {
+            list.Clear();
             var context = new db();
             var products = context.Products
                 .Where(x =>
@@ -59,6 +60,7 @@ namespace SidorejoWorkshop.UC.Payment
                 {
                     ID = product.ProductId,
                     Name = product.Name,
+                    Description = product.Description
                 };
 
                 if (product.SellPrice is null) item.Price = "0";
@@ -73,6 +75,7 @@ namespace SidorejoWorkshop.UC.Payment
             {
                 colPId = x.ID,
                 colName = x.Name,
+                colDesc = x.Description,
                 colQty = x.Qty,
                 colSPrice = x.Price
             }).ToList();

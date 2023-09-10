@@ -38,6 +38,7 @@
             this.dgv = new System.Windows.Forms.DataGridView();
             this.colPId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
@@ -50,7 +51,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.0678F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.93221F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tBoxSearch, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.iBtnSearch, 2, 0);
@@ -71,7 +72,7 @@
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(59, 38);
+            this.label1.Size = new System.Drawing.Size(58, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "Search";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -79,7 +80,7 @@
             // tBoxSearch
             // 
             this.tBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxSearch.Location = new System.Drawing.Point(68, 9);
+            this.tBoxSearch.Location = new System.Drawing.Point(67, 9);
             this.tBoxSearch.Name = "tBoxSearch";
             this.tBoxSearch.Size = new System.Drawing.Size(391, 20);
             this.tBoxSearch.TabIndex = 1;
@@ -91,9 +92,9 @@
             this.iBtnSearch.IconChar = FontAwesome.Sharp.IconChar.None;
             this.iBtnSearch.IconColor = System.Drawing.Color.Black;
             this.iBtnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iBtnSearch.Location = new System.Drawing.Point(465, 3);
+            this.iBtnSearch.Location = new System.Drawing.Point(464, 3);
             this.iBtnSearch.Name = "iBtnSearch";
-            this.iBtnSearch.Size = new System.Drawing.Size(97, 32);
+            this.iBtnSearch.Size = new System.Drawing.Size(98, 32);
             this.iBtnSearch.TabIndex = 2;
             this.iBtnSearch.Text = "Search";
             this.iBtnSearch.UseVisualStyleBackColor = true;
@@ -152,6 +153,7 @@
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colPId,
             this.colName,
+            this.colDesc,
             this.colQty,
             this.colSPrice});
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -173,6 +175,12 @@
             this.colName.DataPropertyName = "colName";
             this.colName.HeaderText = "Name";
             this.colName.Name = "colName";
+            // 
+            // colDesc
+            // 
+            this.colDesc.DataPropertyName = "colDesc";
+            this.colDesc.HeaderText = "Description";
+            this.colDesc.Name = "colDesc";
             // 
             // colQty
             // 
@@ -220,6 +228,7 @@
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSPrice;
     }

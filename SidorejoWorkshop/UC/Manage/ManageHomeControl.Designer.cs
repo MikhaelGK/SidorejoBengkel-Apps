@@ -48,7 +48,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(705, 65);
+            this.panel1.Size = new System.Drawing.Size(799, 75);
             this.panel1.TabIndex = 0;
             // 
             // iBtnCustomerVehicle
@@ -57,15 +57,15 @@
             this.iBtnCustomerVehicle.BackColor = System.Drawing.Color.Transparent;
             this.iBtnCustomerVehicle.FlatAppearance.BorderSize = 0;
             this.iBtnCustomerVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iBtnCustomerVehicle.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iBtnCustomerVehicle.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iBtnCustomerVehicle.ForeColor = System.Drawing.Color.Black;
             this.iBtnCustomerVehicle.IconChar = FontAwesome.Sharp.IconChar.None;
             this.iBtnCustomerVehicle.IconColor = System.Drawing.Color.White;
             this.iBtnCustomerVehicle.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iBtnCustomerVehicle.IconSize = 28;
-            this.iBtnCustomerVehicle.Location = new System.Drawing.Point(525, 0);
+            this.iBtnCustomerVehicle.Location = new System.Drawing.Point(528, 0);
             this.iBtnCustomerVehicle.Name = "iBtnCustomerVehicle";
-            this.iBtnCustomerVehicle.Size = new System.Drawing.Size(169, 65);
+            this.iBtnCustomerVehicle.Size = new System.Drawing.Size(169, 75);
             this.iBtnCustomerVehicle.TabIndex = 5;
             this.iBtnCustomerVehicle.Text = "Customer Vehicle";
             this.iBtnCustomerVehicle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -78,15 +78,15 @@
             this.iBtnVehicle.BackColor = System.Drawing.Color.Transparent;
             this.iBtnVehicle.FlatAppearance.BorderSize = 0;
             this.iBtnVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iBtnVehicle.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iBtnVehicle.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iBtnVehicle.ForeColor = System.Drawing.Color.Black;
             this.iBtnVehicle.IconChar = FontAwesome.Sharp.IconChar.None;
             this.iBtnVehicle.IconColor = System.Drawing.Color.White;
             this.iBtnVehicle.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iBtnVehicle.IconSize = 28;
-            this.iBtnVehicle.Location = new System.Drawing.Point(350, 0);
+            this.iBtnVehicle.Location = new System.Drawing.Point(353, 0);
             this.iBtnVehicle.Name = "iBtnVehicle";
-            this.iBtnVehicle.Size = new System.Drawing.Size(169, 65);
+            this.iBtnVehicle.Size = new System.Drawing.Size(169, 75);
             this.iBtnVehicle.TabIndex = 4;
             this.iBtnVehicle.Text = "Vehicle";
             this.iBtnVehicle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -99,15 +99,15 @@
             this.iBtnCustomer.BackColor = System.Drawing.Color.Transparent;
             this.iBtnCustomer.FlatAppearance.BorderSize = 0;
             this.iBtnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iBtnCustomer.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iBtnCustomer.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iBtnCustomer.ForeColor = System.Drawing.Color.Black;
             this.iBtnCustomer.IconChar = FontAwesome.Sharp.IconChar.None;
             this.iBtnCustomer.IconColor = System.Drawing.Color.White;
             this.iBtnCustomer.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iBtnCustomer.IconSize = 28;
-            this.iBtnCustomer.Location = new System.Drawing.Point(175, 0);
+            this.iBtnCustomer.Location = new System.Drawing.Point(178, 0);
             this.iBtnCustomer.Name = "iBtnCustomer";
-            this.iBtnCustomer.Size = new System.Drawing.Size(169, 65);
+            this.iBtnCustomer.Size = new System.Drawing.Size(169, 75);
             this.iBtnCustomer.TabIndex = 3;
             this.iBtnCustomer.Text = "Customer";
             this.iBtnCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -120,7 +120,7 @@
             this.iBtnProduct.BackColor = System.Drawing.Color.Transparent;
             this.iBtnProduct.FlatAppearance.BorderSize = 0;
             this.iBtnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iBtnProduct.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iBtnProduct.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iBtnProduct.ForeColor = System.Drawing.Color.Black;
             this.iBtnProduct.IconChar = FontAwesome.Sharp.IconChar.None;
             this.iBtnProduct.IconColor = System.Drawing.Color.White;
@@ -128,7 +128,7 @@
             this.iBtnProduct.IconSize = 28;
             this.iBtnProduct.Location = new System.Drawing.Point(0, 0);
             this.iBtnProduct.Name = "iBtnProduct";
-            this.iBtnProduct.Size = new System.Drawing.Size(169, 65);
+            this.iBtnProduct.Size = new System.Drawing.Size(169, 75);
             this.iBtnProduct.TabIndex = 2;
             this.iBtnProduct.Text = "Product";
             this.iBtnProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -150,9 +150,9 @@
             this.gradientPanel2.Angle = 0F;
             this.gradientPanel2.BottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(72)))), ((int)(((byte)(114)))));
             this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gradientPanel2.Location = new System.Drawing.Point(0, 65);
+            this.gradientPanel2.Location = new System.Drawing.Point(0, 75);
             this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(705, 10);
+            this.gradientPanel2.Size = new System.Drawing.Size(799, 10);
             this.gradientPanel2.TabIndex = 2;
             this.gradientPanel2.TopColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(72)))), ((int)(((byte)(114)))));
             // 
@@ -160,9 +160,9 @@
             // 
             this.contentPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentPanel.Location = new System.Drawing.Point(0, 75);
+            this.contentPanel.Location = new System.Drawing.Point(0, 85);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(705, 467);
+            this.contentPanel.Size = new System.Drawing.Size(799, 598);
             this.contentPanel.TabIndex = 3;
             // 
             // ManageHomeControl
@@ -174,7 +174,7 @@
             this.Controls.Add(this.sidePanel);
             this.Controls.Add(this.panel1);
             this.Name = "ManageHomeControl";
-            this.Size = new System.Drawing.Size(705, 542);
+            this.Size = new System.Drawing.Size(799, 683);
             this.Load += new System.EventHandler(this.ManageHomeControl_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -32,6 +32,7 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.contentPanel = new System.Windows.Forms.Panel();
             this.gradientPanel1 = new SidorejoWorkshop.Helper.GradientPanel();
+            this.iBtnStock = new FontAwesome.Sharp.IconButton();
             this.sidePanel = new SidorejoWorkshop.Helper.GradientPanel();
             this.iBtnLogout = new FontAwesome.Sharp.IconButton();
             this.iBtnExit = new FontAwesome.Sharp.IconButton();
@@ -40,7 +41,6 @@
             this.iBtnManage = new FontAwesome.Sharp.IconButton();
             this.lTime = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.iBtnStock = new FontAwesome.Sharp.IconButton();
             this.gradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +54,7 @@
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contentPanel.Location = new System.Drawing.Point(197, 0);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(705, 542);
+            this.contentPanel.Size = new System.Drawing.Size(799, 683);
             this.contentPanel.TabIndex = 1;
             // 
             // gradientPanel1
@@ -73,9 +73,32 @@
             this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.gradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(197, 542);
+            this.gradientPanel1.Size = new System.Drawing.Size(197, 683);
             this.gradientPanel1.TabIndex = 0;
             this.gradientPanel1.TopColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(72)))), ((int)(((byte)(114)))));
+            // 
+            // iBtnStock
+            // 
+            this.iBtnStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.iBtnStock.BackColor = System.Drawing.Color.Transparent;
+            this.iBtnStock.FlatAppearance.BorderSize = 0;
+            this.iBtnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iBtnStock.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iBtnStock.ForeColor = System.Drawing.Color.White;
+            this.iBtnStock.IconChar = FontAwesome.Sharp.IconChar.CloudDownload;
+            this.iBtnStock.IconColor = System.Drawing.Color.White;
+            this.iBtnStock.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iBtnStock.IconSize = 28;
+            this.iBtnStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iBtnStock.Location = new System.Drawing.Point(-1, 251);
+            this.iBtnStock.Name = "iBtnStock";
+            this.iBtnStock.Padding = new System.Windows.Forms.Padding(15, 0, 20, 0);
+            this.iBtnStock.Size = new System.Drawing.Size(197, 52);
+            this.iBtnStock.TabIndex = 8;
+            this.iBtnStock.Text = "Incoming Stock";
+            this.iBtnStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iBtnStock.UseVisualStyleBackColor = false;
+            this.iBtnStock.Click += new System.EventHandler(this.iBtnStock_Click);
             // 
             // sidePanel
             // 
@@ -90,8 +113,8 @@
             // 
             // iBtnLogout
             // 
-            this.iBtnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.iBtnLogout.BackColor = System.Drawing.Color.Transparent;
+            this.iBtnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.iBtnLogout.FlatAppearance.BorderSize = 0;
             this.iBtnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iBtnLogout.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -101,10 +124,10 @@
             this.iBtnLogout.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iBtnLogout.IconSize = 28;
             this.iBtnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iBtnLogout.Location = new System.Drawing.Point(-1, 429);
+            this.iBtnLogout.Location = new System.Drawing.Point(0, 577);
             this.iBtnLogout.Name = "iBtnLogout";
             this.iBtnLogout.Padding = new System.Windows.Forms.Padding(15, 0, 20, 0);
-            this.iBtnLogout.Size = new System.Drawing.Size(197, 52);
+            this.iBtnLogout.Size = new System.Drawing.Size(195, 52);
             this.iBtnLogout.TabIndex = 5;
             this.iBtnLogout.Text = "Logout";
             this.iBtnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -113,8 +136,8 @@
             // 
             // iBtnExit
             // 
-            this.iBtnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.iBtnExit.BackColor = System.Drawing.Color.Transparent;
+            this.iBtnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.iBtnExit.FlatAppearance.BorderSize = 0;
             this.iBtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iBtnExit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -124,10 +147,10 @@
             this.iBtnExit.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iBtnExit.IconSize = 28;
             this.iBtnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iBtnExit.Location = new System.Drawing.Point(-2, 487);
+            this.iBtnExit.Location = new System.Drawing.Point(0, 629);
             this.iBtnExit.Name = "iBtnExit";
             this.iBtnExit.Padding = new System.Windows.Forms.Padding(15, 0, 20, 0);
-            this.iBtnExit.Size = new System.Drawing.Size(197, 52);
+            this.iBtnExit.Size = new System.Drawing.Size(195, 52);
             this.iBtnExit.TabIndex = 4;
             this.iBtnExit.Text = "Exit";
             this.iBtnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -222,37 +245,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(197, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(2, 542);
+            this.panel1.Size = new System.Drawing.Size(2, 683);
             this.panel1.TabIndex = 2;
-            // 
-            // iBtnStock
-            // 
-            this.iBtnStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.iBtnStock.BackColor = System.Drawing.Color.Transparent;
-            this.iBtnStock.FlatAppearance.BorderSize = 0;
-            this.iBtnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iBtnStock.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iBtnStock.ForeColor = System.Drawing.Color.White;
-            this.iBtnStock.IconChar = FontAwesome.Sharp.IconChar.CloudArrowDown;
-            this.iBtnStock.IconColor = System.Drawing.Color.White;
-            this.iBtnStock.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iBtnStock.IconSize = 28;
-            this.iBtnStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iBtnStock.Location = new System.Drawing.Point(-1, 251);
-            this.iBtnStock.Name = "iBtnStock";
-            this.iBtnStock.Padding = new System.Windows.Forms.Padding(15, 0, 20, 0);
-            this.iBtnStock.Size = new System.Drawing.Size(197, 52);
-            this.iBtnStock.TabIndex = 8;
-            this.iBtnStock.Text = "Incoming Stock";
-            this.iBtnStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iBtnStock.UseVisualStyleBackColor = false;
-            this.iBtnStock.Click += new System.EventHandler(this.iBtnStock_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 542);
+            this.ClientSize = new System.Drawing.Size(996, 683);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.gradientPanel1);
