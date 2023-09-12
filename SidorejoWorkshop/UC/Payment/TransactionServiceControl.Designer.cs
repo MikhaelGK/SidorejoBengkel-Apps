@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -88,16 +90,17 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnPay);
             this.splitContainer1.Panel2.Controls.Add(this.lTrxId);
             this.splitContainer1.Panel2.Controls.Add(this.dgv);
-            this.splitContainer1.Size = new System.Drawing.Size(685, 447);
-            this.splitContainer1.SplitterDistance = 194;
+            this.splitContainer1.Size = new System.Drawing.Size(779, 588);
+            this.splitContainer1.SplitterDistance = 255;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel2);
-            this.groupBox2.Location = new System.Drawing.Point(346, 6);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(416, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(333, 138);
+            this.groupBox2.Size = new System.Drawing.Size(360, 143);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Transaction Detail";
@@ -112,23 +115,23 @@
             this.tableLayoutPanel2.Controls.Add(this.label7, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.tBoxPrice, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 18);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(327, 119);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(354, 122);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // tBoxDesc
             // 
             this.tBoxDesc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxDesc.Location = new System.Drawing.Point(129, 36);
+            this.tBoxDesc.Location = new System.Drawing.Point(140, 38);
             this.tBoxDesc.Multiline = true;
             this.tBoxDesc.Name = "tBoxDesc";
-            this.tBoxDesc.Size = new System.Drawing.Size(195, 76);
+            this.tBoxDesc.Size = new System.Drawing.Size(211, 76);
             this.tBoxDesc.TabIndex = 6;
             // 
             // label6
@@ -137,7 +140,7 @@
             this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
             this.label6.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label6.Size = new System.Drawing.Size(120, 29);
+            this.label6.Size = new System.Drawing.Size(131, 30);
             this.label6.TabIndex = 0;
             this.label6.Text = "Price";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -145,24 +148,25 @@
             // label7
             // 
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(3, 29);
+            this.label7.Location = new System.Drawing.Point(3, 30);
             this.label7.Name = "label7";
             this.label7.Padding = new System.Windows.Forms.Padding(10, 10, 0, 0);
-            this.label7.Size = new System.Drawing.Size(120, 90);
+            this.label7.Size = new System.Drawing.Size(131, 92);
             this.label7.TabIndex = 1;
             this.label7.Text = "Description";
             // 
             // tBoxPrice
             // 
             this.tBoxPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxPrice.Location = new System.Drawing.Point(129, 4);
+            this.tBoxPrice.Location = new System.Drawing.Point(140, 4);
             this.tBoxPrice.Name = "tBoxPrice";
-            this.tBoxPrice.Size = new System.Drawing.Size(195, 20);
+            this.tBoxPrice.Size = new System.Drawing.Size(211, 22);
             this.tBoxPrice.TabIndex = 5;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(597, 152);
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(691, 213);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(82, 36);
             this.btnAdd.TabIndex = 17;
@@ -172,7 +176,8 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(509, 152);
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(603, 213);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(82, 36);
             this.btnCancel.TabIndex = 16;
@@ -183,9 +188,10 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(334, 182);
+            this.groupBox1.Size = new System.Drawing.Size(401, 182);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Vehicle Data";
@@ -206,7 +212,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tBoxId, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tBoxVNumber, 1, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 18);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -214,34 +220,34 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(328, 163);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(395, 161);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tBoxVName
             // 
             this.tBoxVName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tBoxVName.Enabled = false;
-            this.tBoxVName.Location = new System.Drawing.Point(129, 102);
+            this.tBoxVName.Location = new System.Drawing.Point(155, 101);
             this.tBoxVName.Name = "tBoxVName";
-            this.tBoxVName.Size = new System.Drawing.Size(196, 20);
+            this.tBoxVName.Size = new System.Drawing.Size(237, 22);
             this.tBoxVName.TabIndex = 8;
             // 
             // tBoxCPhone
             // 
             this.tBoxCPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tBoxCPhone.Enabled = false;
-            this.tBoxCPhone.Location = new System.Drawing.Point(129, 70);
+            this.tBoxCPhone.Location = new System.Drawing.Point(155, 69);
             this.tBoxCPhone.Name = "tBoxCPhone";
-            this.tBoxCPhone.Size = new System.Drawing.Size(196, 20);
+            this.tBoxCPhone.Size = new System.Drawing.Size(237, 22);
             this.tBoxCPhone.TabIndex = 7;
             // 
             // tBoxCName
             // 
             this.tBoxCName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tBoxCName.Enabled = false;
-            this.tBoxCName.Location = new System.Drawing.Point(129, 38);
+            this.tBoxCName.Location = new System.Drawing.Point(155, 37);
             this.tBoxCName.Name = "tBoxCName";
-            this.tBoxCName.Size = new System.Drawing.Size(196, 20);
+            this.tBoxCName.Size = new System.Drawing.Size(237, 22);
             this.tBoxCName.TabIndex = 6;
             // 
             // label1
@@ -250,7 +256,7 @@
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(120, 32);
+            this.label1.Size = new System.Drawing.Size(146, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Customer Vehicle Id";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -261,7 +267,7 @@
             this.label2.Location = new System.Drawing.Point(3, 32);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label2.Size = new System.Drawing.Size(120, 32);
+            this.label2.Size = new System.Drawing.Size(146, 32);
             this.label2.TabIndex = 1;
             this.label2.Text = "Customer Name";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -272,7 +278,7 @@
             this.label3.Location = new System.Drawing.Point(3, 64);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label3.Size = new System.Drawing.Size(120, 32);
+            this.label3.Size = new System.Drawing.Size(146, 32);
             this.label3.TabIndex = 2;
             this.label3.Text = "Customer Phone";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -283,7 +289,7 @@
             this.label4.Location = new System.Drawing.Point(3, 96);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label4.Size = new System.Drawing.Size(120, 32);
+            this.label4.Size = new System.Drawing.Size(146, 32);
             this.label4.TabIndex = 3;
             this.label4.Text = "Vehicle Name";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -294,7 +300,7 @@
             this.label5.Location = new System.Drawing.Point(3, 128);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label5.Size = new System.Drawing.Size(120, 35);
+            this.label5.Size = new System.Drawing.Size(146, 33);
             this.label5.TabIndex = 4;
             this.label5.Text = "Police Number";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -302,10 +308,10 @@
             // tBoxId
             // 
             this.tBoxId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBoxId.Location = new System.Drawing.Point(129, 6);
+            this.tBoxId.Location = new System.Drawing.Point(155, 5);
             this.tBoxId.Name = "tBoxId";
             this.tBoxId.ReadOnly = true;
-            this.tBoxId.Size = new System.Drawing.Size(196, 20);
+            this.tBoxId.Size = new System.Drawing.Size(237, 22);
             this.tBoxId.TabIndex = 5;
             this.tBoxId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tBoxId_KeyDown);
             // 
@@ -313,14 +319,15 @@
             // 
             this.tBoxVNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tBoxVNumber.Enabled = false;
-            this.tBoxVNumber.Location = new System.Drawing.Point(129, 135);
+            this.tBoxVNumber.Location = new System.Drawing.Point(155, 133);
             this.tBoxVNumber.Name = "tBoxVNumber";
-            this.tBoxVNumber.Size = new System.Drawing.Size(196, 20);
+            this.tBoxVNumber.Size = new System.Drawing.Size(237, 22);
             this.tBoxVNumber.TabIndex = 9;
             // 
             // lTotal
             // 
-            this.lTotal.Location = new System.Drawing.Point(478, 175);
+            this.lTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lTotal.Location = new System.Drawing.Point(572, 257);
             this.lTotal.Name = "lTotal";
             this.lTotal.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.lTotal.Size = new System.Drawing.Size(204, 30);
@@ -330,7 +337,8 @@
             // 
             // btnPay
             // 
-            this.btnPay.Location = new System.Drawing.Point(571, 210);
+            this.btnPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPay.Location = new System.Drawing.Point(665, 290);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(111, 36);
             this.btnPay.TabIndex = 18;
@@ -340,27 +348,45 @@
             // 
             // lTrxId
             // 
-            this.lTrxId.Location = new System.Drawing.Point(3, 214);
+            this.lTrxId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lTrxId.Location = new System.Drawing.Point(3, 301);
             this.lTrxId.Name = "lTrxId";
             this.lTrxId.Size = new System.Drawing.Size(187, 28);
             this.lTrxId.TabIndex = 17;
             this.lTrxId.Text = "Transaction ID: T2023";
             this.lTrxId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lTrxId.Click += new System.EventHandler(this.lTrxId_Click);
             // 
             // dgv
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semilight", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
             this.colDesc,
             this.colPrice});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgv.Location = new System.Drawing.Point(0, 0);
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersVisible = false;
-            this.dgv.Size = new System.Drawing.Size(685, 172);
+            this.dgv.Size = new System.Drawing.Size(779, 254);
             this.dgv.TabIndex = 0;
             // 
             // colId
@@ -389,7 +415,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "TransactionServiceControl";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Size = new System.Drawing.Size(705, 467);
+            this.Size = new System.Drawing.Size(799, 608);
             this.Load += new System.EventHandler(this.TransactionServiceControl_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

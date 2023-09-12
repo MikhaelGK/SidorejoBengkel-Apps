@@ -45,7 +45,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(705, 65);
+            this.panel1.Size = new System.Drawing.Size(799, 65);
             this.panel1.TabIndex = 2;
             // 
             // sidePanel
@@ -70,7 +70,7 @@
             this.iBtnService.IconColor = System.Drawing.Color.White;
             this.iBtnService.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iBtnService.IconSize = 28;
-            this.iBtnService.Location = new System.Drawing.Point(175, 0);
+            this.iBtnService.Location = new System.Drawing.Point(222, 0);
             this.iBtnService.Name = "iBtnService";
             this.iBtnService.Size = new System.Drawing.Size(169, 65);
             this.iBtnService.TabIndex = 3;
@@ -91,7 +91,7 @@
             this.iBtnProduct.IconColor = System.Drawing.Color.White;
             this.iBtnProduct.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iBtnProduct.IconSize = 28;
-            this.iBtnProduct.Location = new System.Drawing.Point(0, 0);
+            this.iBtnProduct.Location = new System.Drawing.Point(47, 0);
             this.iBtnProduct.Name = "iBtnProduct";
             this.iBtnProduct.Size = new System.Drawing.Size(169, 65);
             this.iBtnProduct.TabIndex = 2;
@@ -107,7 +107,7 @@
             this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.gradientPanel2.Location = new System.Drawing.Point(0, 65);
             this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(705, 10);
+            this.gradientPanel2.Size = new System.Drawing.Size(799, 10);
             this.gradientPanel2.TabIndex = 4;
             this.gradientPanel2.TopColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(72)))), ((int)(((byte)(114)))));
             // 
@@ -117,7 +117,7 @@
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contentPanel.Location = new System.Drawing.Point(0, 75);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(705, 467);
+            this.contentPanel.Size = new System.Drawing.Size(799, 608);
             this.contentPanel.TabIndex = 5;
             // 
             // ReportHomeControl
@@ -128,7 +128,7 @@
             this.Controls.Add(this.gradientPanel2);
             this.Controls.Add(this.panel1);
             this.Name = "ReportHomeControl";
-            this.Size = new System.Drawing.Size(705, 542);
+            this.Size = new System.Drawing.Size(799, 683);
             this.Load += new System.EventHandler(this.ReportHomeControl_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -199,5 +199,10 @@ namespace SidorejoWorkshop.UC.Incoming
                 }
             }
         }
+
+        private void splitContainer2_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

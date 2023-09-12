@@ -1,3 +1,3 @@
 # Ignore file from bin folder and debug folder
-*SidorejoWorkshop/bin
-*SidorejoWorkshop/debug
+**/bin/*
+**/obj/*

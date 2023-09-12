@@ -181,5 +181,10 @@ namespace SidorejoWorkshop.UC.Payment
             tBoxVName.Clear();
             tBoxVNumber.Clear();
         }
+
+        private void lTrxId_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
