@@ -150,6 +150,11 @@ namespace SidorejoWorkshop.UC.Payment
             TrxProductConfirmViewModel.Cart = _cart;
             var sd = new HaveCustomerForm();
             sd.ShowDialog();
+            sd.FormClosed += delegate
+            {
+                _cart.Clear();
+                LoadData();
+            };
         }
 
         private void TransactionProductControl_Load(object sender, EventArgs e)

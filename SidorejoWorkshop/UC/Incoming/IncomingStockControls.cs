@@ -24,6 +24,8 @@ namespace SidorejoWorkshop.UC.Incoming
             InitializeComponent();
         }
 
+        
+
         private bool CheckValidation()
         {
             var strgs = new List<string>()
@@ -83,6 +85,8 @@ namespace SidorejoWorkshop.UC.Incoming
                 colSubtotal = SnippetCurrency.Currency(x.Qty * x.BuyPrice)
             }).ToList();
         }
+
+        #region Setup UI
 
         private void IncomingStockControls_Load(object sender, EventArgs e)
         {
@@ -148,6 +152,8 @@ namespace SidorejoWorkshop.UC.Incoming
                 case Operation.None:
                     break;
                 case Operation.Add:
+
+
                     var item = new IncomingProduct()
                     {
                         CreatedAt = DateTime.Now,
@@ -204,5 +210,8 @@ namespace SidorejoWorkshop.UC.Incoming
         {
 
         }
+
+        #endregion
+
     }
 }
