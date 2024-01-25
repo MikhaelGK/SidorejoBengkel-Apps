@@ -17,21 +17,22 @@ namespace SidorejoWorkshop
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.IncomingProducts = new HashSet<IncomingProduct>();
             this.DetailTrxes = new HashSet<DetailTrx>();
+            this.IncomingProducts = new HashSet<IncomingProduct>();
         }
     
         public string ProductId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public Nullable<int> SellPrice { get; set; }
+        public Nullable<int> CostOfGoodsSold { get; set; }
         public System.DateTime CreatedAt { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
         public Nullable<System.DateTime> DeletedAt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IncomingProduct> IncomingProducts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailTrx> DetailTrxes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<IncomingProduct> IncomingProducts { get; set; }
     }
 }

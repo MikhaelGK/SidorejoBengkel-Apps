@@ -28,10 +28,10 @@ namespace SidorejoWorkshop
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Vehicle> Vehicles { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<CustomerVehicle> CustomerVehicles { get; set; }
         public virtual DbSet<HeaderTrx> HeaderTrxes { get; set; }
         public virtual DbSet<IncomingProduct> IncomingProducts { get; set; }
         public virtual DbSet<DetailTrx> DetailTrxes { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     }
 }

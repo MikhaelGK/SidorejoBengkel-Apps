@@ -4,6 +4,7 @@ using SidorejoWorkshop.UC.Payment;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -24,7 +25,58 @@ namespace SidorejoWorkshop.UC.Incoming
             InitializeComponent();
         }
 
-        
+        private void CountingCOGS(IncomingProduct item)
+        {
+            var costOfGoodsSold = 0;
+
+            var context = new db();
+            var product = context.Products
+                .FirstOrDefault(x =>
+                    x.DeletedAt == null &&
+                    x.ProductId == tBoxId.Text);
+
+            var incomingData = context.IncomingProducts
+                .Where(x =>
+                    x.DeletedAt == null &&
+                    x.ProductId == item.ProductId)
+                .ToList();
+            var incomingQty = incomingData.Count == 0 ? 0 :
+                Convert.ToInt32(incomingData.Sum(x => x.Qty));
+            if (incomingQty == 0 && product.CostOfGoodsSold == null)
+            {
+                costOfGoodsSold = item.BuyPrice;
+                product.CostOfGoodsSold = costOfGoodsSold;
+                context.SaveChanges();
+                return;
+            }
+            
+
+            var detailData = context.DetailTrxes
+                .Where(x =>
+                    x.DeletedAt == null &&
+                    x.ProductId == item.ProductId)
+                .ToList();
+            var soldQty = detailData.Count == 0 ? 0 :
+                Convert.ToInt32(detailData.Sum(x => x.Qty));
+
+            
+
+            var restQty = incomingQty - soldQty;
+            if (restQty != 0)
+            {
+                var restCost = restQty * (int)product.CostOfGoodsSold;
+                var incomingCost = item.Qty * item.BuyPrice;
+                var totalQty = restQty + item.Qty;
+                costOfGoodsSold = (restCost + incomingCost) / totalQty;
+            }
+            else
+            {
+                costOfGoodsSold = item.BuyPrice * item.Qty;
+            }
+
+            product.CostOfGoodsSold = costOfGoodsSold;
+            context.SaveChanges();
+        }
 
         private bool CheckValidation()
         {
@@ -152,8 +204,6 @@ namespace SidorejoWorkshop.UC.Incoming
                 case Operation.None:
                     break;
                 case Operation.Add:
-
-
                     var item = new IncomingProduct()
                     {
                         CreatedAt = DateTime.Now,
@@ -162,6 +212,7 @@ namespace SidorejoWorkshop.UC.Incoming
                         BuyPrice = Convert.ToInt32(tBoxPrice.Text),
                         Date = DateTime.Now
                     };
+                    CountingCOGS(item);
                     context.IncomingProducts.Add(item);
                     break;
                 case Operation.Update:

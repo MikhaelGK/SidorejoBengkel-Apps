@@ -87,6 +87,7 @@
           <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="SellPrice" Type="int" />
+          <Property Name="CostOfGoodsSold" Type="int" />
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
           <Property Name="UpdatedAt" Type="datetime" />
           <Property Name="DeletedAt" Type="datetime" />
@@ -267,7 +268,6 @@
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
-          <EntitySet Name="Products" EntityType="SIDOREJO_WORKSHOPModel.Product" />
           <EntitySet Name="CustomerVehicles" EntityType="SIDOREJO_WORKSHOPModel.CustomerVehicle" />
           <AssociationSet Name="FK_CustomerVehicles_Customers" Association="SIDOREJO_WORKSHOPModel.FK_CustomerVehicles_Customers">
             <End Role="Customer" EntitySet="Customers" />
@@ -283,10 +283,6 @@
             <End Role="HeaderTrx" EntitySet="HeaderTrxes" />
           </AssociationSet>
           <EntitySet Name="IncomingProducts" EntityType="SIDOREJO_WORKSHOPModel.IncomingProduct" />
-          <AssociationSet Name="FK_IncomingProduct_Product" Association="SIDOREJO_WORKSHOPModel.FK_IncomingProduct_Product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="IncomingProduct" EntitySet="IncomingProducts" />
-          </AssociationSet>
           <EntitySet Name="DetailTrxes" EntityType="SIDOREJO_WORKSHOPModel.DetailTrx" />
           <AssociationSet Name="FK_DetailTrx_CustomerVehicle" Association="SIDOREJO_WORKSHOPModel.FK_DetailTrx_CustomerVehicle">
             <End Role="CustomerVehicle" EntitySet="CustomerVehicles" />
@@ -296,25 +292,16 @@
             <End Role="HeaderTrx" EntitySet="HeaderTrxes" />
             <End Role="DetailTrx" EntitySet="DetailTrxes" />
           </AssociationSet>
+          <EntitySet Name="Products" EntityType="SIDOREJO_WORKSHOPModel.Product" />
           <AssociationSet Name="FK_DetailTrx_Product" Association="SIDOREJO_WORKSHOPModel.FK_DetailTrx_Product">
             <End Role="Product" EntitySet="Products" />
             <End Role="DetailTrx" EntitySet="DetailTrxes" />
           </AssociationSet>
+          <AssociationSet Name="FK_IncomingProduct_Product" Association="SIDOREJO_WORKSHOPModel.FK_IncomingProduct_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="IncomingProduct" EntitySet="IncomingProducts" />
+          </AssociationSet>
           </EntityContainer>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="ProductId" />
-          </Key>
-          <Property Name="ProductId" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="SellPrice" Type="Int32" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
-          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="IncomingProducts" Relationship="SIDOREJO_WORKSHOPModel.FK_IncomingProduct_Product" FromRole="Product" ToRole="IncomingProduct" />
-          <NavigationProperty Name="DetailTrxes" Relationship="SIDOREJO_WORKSHOPModel.FK_DetailTrx_Product" FromRole="Product" ToRole="DetailTrx" />
-        </EntityType>
         <EntityType Name="CustomerVehicle">
           <Key>
             <PropertyRef Name="CustomerVehicleId" />
@@ -393,18 +380,6 @@
           <Property Name="DeletedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Product" Relationship="SIDOREJO_WORKSHOPModel.FK_IncomingProduct_Product" FromRole="IncomingProduct" ToRole="Product" />
         </EntityType>
-        <Association Name="FK_IncomingProduct_Product">
-          <End Type="SIDOREJO_WORKSHOPModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="SIDOREJO_WORKSHOPModel.IncomingProduct" Role="IncomingProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="IncomingProduct">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="DetailTrx">
           <Key>
             <PropertyRef Name="DetailTrxId" />
@@ -447,6 +422,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SellPrice" Type="Int32" />
+          <Property Name="CostOfGoodsSold" Type="Int32" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DetailTrxes" Relationship="SIDOREJO_WORKSHOPModel.FK_DetailTrx_Product" FromRole="Product" ToRole="DetailTrx" />
+          <NavigationProperty Name="IncomingProducts" Relationship="SIDOREJO_WORKSHOPModel.FK_IncomingProduct_Product" FromRole="Product" ToRole="IncomingProduct" />
+        </EntityType>
         <Association Name="FK_DetailTrx_Product">
           <End Type="SIDOREJO_WORKSHOPModel.Product" Role="Product" Multiplicity="0..1" />
           <End Type="SIDOREJO_WORKSHOPModel.DetailTrx" Role="DetailTrx" Multiplicity="*" />
@@ -455,6 +445,18 @@
               <PropertyRef Name="ProductId" />
             </Principal>
             <Dependent Role="DetailTrx">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IncomingProduct_Product">
+          <End Type="SIDOREJO_WORKSHOPModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="SIDOREJO_WORKSHOPModel.IncomingProduct" Role="IncomingProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="IncomingProduct">
               <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
@@ -498,19 +500,6 @@
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
                 <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="SIDOREJO_WORKSHOPModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -566,6 +555,20 @@
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="TrxId" ColumnName="TrxId" />
                 <ScalarProperty Name="DetailTrxId" ColumnName="DetailTrxId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="SIDOREJO_WORKSHOPModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CostOfGoodsSold" ColumnName="CostOfGoodsSold" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -51,42 +51,71 @@ namespace SidorejoWorkshop.UC.Manage
             var takeIndex = 0;
             var rest = 0;
             var price = 0;
-            var takeDate = take[takeIndex].HeaderTrx.Date;
 
-            while (true)
+            if (take.Count != 0)
             {
-                if (incomingChoosenProducts[incomingIndex].Date > takeDate)
+                var takeDate = take[takeIndex].HeaderTrx.Date;
+                while (true)
                 {
-                    // Counting Rest
-                    if (rest == 0) rest = incomingChoosenProducts[incomingIndex - 1].Qty - (int)take[takeIndex].Qty;
-                    else rest -= (int)take[takeIndex].Qty;
-
-                    // Counter Updating Take Index
-                    takeIndex++;
-
-                    // Check Take Data
-                    try
+                    if (incomingChoosenProducts[incomingIndex].Date > takeDate)
                     {
-                        var checkException = take[takeIndex];
-                        takeDate = take[takeIndex].HeaderTrx.Date;
+                        // Counting Rest
+                        if (rest == 0) rest = incomingChoosenProducts[incomingIndex - 1].Qty - (int)take[takeIndex].Qty;
+                        else rest -= (int)take[takeIndex].Qty;
+
+                        // Counter Updating Take Index
+                        takeIndex++;
+
+                        // Check Take Data
+                        try
+                        {
+                            var checkException = take[takeIndex];
+                            takeDate = take[takeIndex].HeaderTrx.Date;
+                        }
+                        catch (Exception ex)
+                        {
+                            takeDate = incomingChoosenProducts[incomingIndex].Date;
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        takeDate = incomingChoosenProducts[incomingIndex].Date;
-                    }
-                }
-                else
-                {
-                    // Counting Cost Price
-                    if (rest == 0) price = incomingChoosenProducts[incomingIndex].BuyPrice;
                     else
                     {
-                        var prevIncoming = incomingChoosenProducts[incomingIndex - 1];
-                        var currentIncoming = incomingChoosenProducts[incomingIndex];
+                        // Counting Cost Price
+                        if (rest == 0) price = incomingChoosenProducts[incomingIndex].BuyPrice;
+                        else
+                        {
+                            var prevIncoming = incomingChoosenProducts[incomingIndex - 1];
+                            var currentIncoming = incomingChoosenProducts[incomingIndex];
 
-                        if (price == 0) price = (prevIncoming.BuyPrice + currentIncoming.BuyPrice) / 2;
-                        else price = (price + currentIncoming.BuyPrice) / 2;
+                            if (price == 0) price = ((prevIncoming.BuyPrice * prevIncoming.Qty) + (currentIncoming.BuyPrice * currentIncoming.Qty)) / (prevIncoming.Qty + currentIncoming.Qty);
+                            else price = ((price * rest) + (currentIncoming.BuyPrice * currentIncoming.Qty)) / (rest + currentIncoming.Qty);
+                        }
+
+                        // Count Updating Incoming Index
+                        incomingIndex++;
+
+                        // Check Incoming Data
+                        try
+                        {
+                            var checkException = incomingChoosenProducts[incomingIndex];
+                            rest += incomingChoosenProducts[incomingIndex].Qty;
+                        }
+                        catch (Exception ex)
+                        {
+                            break;
+                        }
                     }
+                }
+            }
+            else
+            {
+                while (true)
+                {
+                    var prevIncoming = incomingChoosenProducts[incomingIndex - 1];
+                    var currentIncoming = incomingChoosenProducts[incomingIndex];
+
+                    // Counting Cost Price
+                    if (price == 0) price = ((prevIncoming.BuyPrice * prevIncoming.Qty) + (currentIncoming.BuyPrice * currentIncoming.Qty)) / (prevIncoming.Qty + currentIncoming.Qty);
+                    else price = ((price * rest) + (currentIncoming.BuyPrice * currentIncoming.Qty)) / (rest + currentIncoming.Qty);
 
                     // Count Updating Incoming Index
                     incomingIndex++;
@@ -125,26 +154,30 @@ namespace SidorejoWorkshop.UC.Manage
                         x.DeletedAt == null &&
                         x.ProductId == product.ProductId)
                     .ToList();
+                var detailTrx = context.DetailTrxes
+                    .Where(x =>
+                        x.DeletedAt == null &&
+                        x.ProductId == product.ProductId)
+                    .ToList();
 
-                var qty = incomingData.Count == 0? 0 : incomingData.Sum(x => x.Qty);
+                // Counting Quantity of the product
+                var incomingQty = incomingData.Count == 0? 0 : 
+                    Convert.ToInt32(incomingData.Sum(x => x.Qty));
+                var soldQty = detailTrx.Count == 0 ? 0 :
+                    Convert.ToInt32(detailTrx.Sum(x => x.Qty));
+                var qty = incomingQty - soldQty;
 
-                var costPrice = CountingCostPrice(product.ProductId);
-
-                var sellQty = Convert.ToInt32(
-                        context.DetailTrxes
-                        .Where(x =>
-                            x.DeletedAt == null &&
-                            x.ProductId == product.ProductId)
-                        .Sum(x => x.Qty)
-                    );
+                // Counting cost price
+                var costPrice = product.CostOfGoodsSold == null? 0 : 
+                    Convert.ToInt32(product.CostOfGoodsSold);
 
                 var item = new ProductViewModel()
                 {
                     ID = product.ProductId,
                     Name = product.Name,
                     Description = product.Description,
-                    Qty = qty - sellQty,
-                    CostPrice = costPrice,
+                    Qty = qty,
+                    CostPrice = SnippetCurrency.Currency(costPrice),
                 };
 
                 if (product.SellPrice is null) item.Price = "Not Value";
@@ -172,7 +205,7 @@ namespace SidorejoWorkshop.UC.Manage
         {
 
         }
-        
+         
         private void ManageProductForm_Load(object sender, EventArgs e)
         {
             LoadData("");
@@ -219,7 +252,6 @@ namespace SidorejoWorkshop.UC.Manage
                 }
 
                 product.DeletedAt = DateTime.Now;
-                context.Products.Remove(product);
                 context.SaveChanges();
             }
             LoadData("");
